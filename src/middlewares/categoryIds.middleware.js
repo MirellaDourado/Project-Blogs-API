@@ -1,4 +1,4 @@
-const { findByAllByID } = require('../service/category.service');
+const { findAllByID } = require('../service/category.service');
 
 module.exports = async (req, res, next) => {
   const { categoryIds } = req.body;
@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
     return res.status(400).json({ message: 'one or more "categoryIds" not found' });
   }
 
-  const categories = await findByAllByID(categoryIds);
+  const categories = await findAllByID(categoryIds);
   if (categories.length !== categoryIds.length) {
     return res.status(400).json({ message: 'one or more "categoryIds" not found' });
   }

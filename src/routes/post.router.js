@@ -10,4 +10,6 @@ postRouter.post('/',
   postFieldsMiddleware,
   postController.create);
 
+postRouter.get('/', tokenMiddleware, postController.getAll);
+
 module.exports = postRouter;

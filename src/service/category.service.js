@@ -4,10 +4,13 @@ const create = async (category) => Category.create(category);
 
 const findByName = async (name) => Category.findOne({ where: { name } });
 
-const findByAllByID = async (id) => Category.findAll({ where: { id } });
+const findAllByID = async (id) => Category.findAll({ where: { id } });
+
+const findAll = async () => Category.findAll();
 
 module.exports = {
   create,
   findByName,
-  findByAllByID,
+  findAllByID,
+  findAll,
 };
