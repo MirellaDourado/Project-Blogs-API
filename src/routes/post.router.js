@@ -1,5 +1,8 @@
 const express = require('express');
-const { tokenMiddleware, categoryIdsMiddleware, postFieldsMiddleware } = require('../middlewares');
+const { tokenMiddleware,
+    categoryIdsMiddleware,
+    postFieldsMiddleware,
+    userVerificationMiddleware } = require('../middlewares');
 const { postController } = require('../controller');
 
 const postRouter = express.Router();
@@ -13,5 +16,11 @@ postRouter.post('/',
 postRouter.get('/', tokenMiddleware, postController.getAll);
 
 postRouter.get('/:id', tokenMiddleware, postController.getById);
+
+postRouter.put('/:id',
+  tokenMiddleware,
+  postFieldsMiddleware,
+  userVerificationMiddleware,
+  postController.update);
 
 module.exports = postRouter;

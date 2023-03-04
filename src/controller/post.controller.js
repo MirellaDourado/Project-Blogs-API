@@ -37,8 +37,21 @@ const getById = async (req, res) => {
   }
 };
 
+const update = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { content, title } = req.body;
+    await postService.edit({ content, title, id });
+    const editedPost = await postService.findById(id);
+    return res.status(200).json(editedPost);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   create,
   getAll,
   getById,
+  update,
 };

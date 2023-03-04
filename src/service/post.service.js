@@ -25,9 +25,13 @@ const findById = async (id) => BlogPost.findByPk(id, {
   ],
 });
 
+const edit = async ({ title, content, id }) => BlogPost
+  .update({ title, content }, { where: { id } });
+
 module.exports = {
   create,
   findPost,
   findAll,
   findById,
+  edit,
 };

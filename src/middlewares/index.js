@@ -6,6 +6,7 @@ const tokenMiddleware = require('./token.middleware');
 const nameMiddleware = require('./name.middleware');
 const categoryIdsMiddleware = require('./categoryIds.middleware');
 const postFieldsMiddleware = require('./postFields.middleware');
+const userVerificationMiddleware = require('./userVerification.middleware');
 
 module.exports = {
   displayNameMiddleware,
@@ -16,4 +17,5 @@ module.exports = {
   nameMiddleware,
   categoryIdsMiddleware,
   postFieldsMiddleware,
+  userVerificationMiddleware,
 };
