@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     if (!isBodyValid(email, password)) {
       return res.status(400).json({ message: 'Some required fields are missing' });
     }
-    const user = await userService.getByEmail(email, password);
+    const user = await userService.getLogin({ email, password });
     
     if (!user) {
       return res.status(400).json({ message: 'Invalid fields' });
