@@ -3,6 +3,7 @@ const emailMiddleware = require('./email.middleware');
 const passwordMiddleware = require('./password.middleware');
 const alreadyUserMiddleware = require('./alreadyUser.middleware');
 const tokenMiddleware = require('./token.middleware');
+const nameMiddleware = require('./name.middleware');
 
 module.exports = {
   displayNameMiddleware,
@@ -10,4 +11,5 @@ module.exports = {
   passwordMiddleware,
   alreadyUserMiddleware,
   tokenMiddleware,
+  nameMiddleware,
 };
