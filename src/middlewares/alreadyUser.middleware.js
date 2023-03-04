@@ -1,4 +1,4 @@
-const { getByEmail } = require('../service/userService');
+const { getByEmail } = require('../service/user.service');
 
 module.exports = async (req, res, next) => {
   const { email } = req.body;

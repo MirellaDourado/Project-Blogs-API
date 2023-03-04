@@ -1,5 +1,5 @@
 const { createToken } = require('../helpers/authFuctions');
-const { userService } = require('../service');
+const { loginService } = require('../service');
 require('dotenv/config');
 
 const isBodyValid = (email, password) => email && password;
@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     if (!isBodyValid(email, password)) {
       return res.status(400).json({ message: 'Some required fields are missing' });
     }
-    const user = await userService.getLogin({ email, password });
+    const user = await loginService({ email, password });
     
     if (!user) {
       return res.status(400).json({ message: 'Invalid fields' });

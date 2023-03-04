@@ -1,7 +1,7 @@
-const displayNameMiddleware = require('./displayNameMiddleware');
-const emailMiddleware = require('./emailMiddleware');
-const passwordMiddleware = require('./passwordMiddleware');
-const alreadyUserMiddleware = require('./alreadyUserMiddleware');
+const displayNameMiddleware = require('./displayName.middleware');
+const emailMiddleware = require('./email.middleware');
+const passwordMiddleware = require('./password.middleware');
+const alreadyUserMiddleware = require('./alreadyUser.middleware');
 
 module.exports = {
   displayNameMiddleware,
