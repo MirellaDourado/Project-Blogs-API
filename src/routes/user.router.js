@@ -13,4 +13,6 @@ api.get('/', tokenMiddleware, userController.getUsers);
 
 api.get('/:id', tokenMiddleware, userController.getUserById);
 
+api.delete('/me', tokenMiddleware, userController.remove);
+
 module.exports = api;

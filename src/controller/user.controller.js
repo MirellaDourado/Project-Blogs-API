@@ -1,5 +1,5 @@
 require('dotenv/config');
-const { createToken } = require('../helpers/authFuctions');
+const { createToken, verifyToken } = require('../helpers/authFuctions');
 const { userService } = require('../service');
 
 const createUser = async (req, res) => {
@@ -33,8 +33,23 @@ const getUserById = async (req, res) => {
   }
 };
 
+const remove = (req, res) => {
+  try {
+    const token = req.header('Authorization');
+    const { data } = verifyToken(token);
+    const { dataValues } = data;
+    const { id } = dataValues;
+    userService.remove(id);
+
+    return res.status(204).json({ message: '' });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createUser,
   getUsers,
   getUserById,
+  remove,
 };
