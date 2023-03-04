@@ -28,10 +28,13 @@ const findById = async (id) => BlogPost.findByPk(id, {
 const edit = async ({ title, content, id }) => BlogPost
   .update({ title, content }, { where: { id } });
 
+const remove = async (id) => BlogPost.destroy({ where: { id } });
+
 module.exports = {
   create,
   findPost,
   findAll,
   findById,
   edit,
+  remove,
 };

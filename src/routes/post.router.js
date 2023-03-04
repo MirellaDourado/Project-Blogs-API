@@ -2,7 +2,8 @@ const express = require('express');
 const { tokenMiddleware,
     categoryIdsMiddleware,
     postFieldsMiddleware,
-    userVerificationMiddleware } = require('../middlewares');
+    userVerificationMiddleware,
+    postExistenceMiddleware } = require('../middlewares');
 const { postController } = require('../controller');
 
 const postRouter = express.Router();
@@ -22,5 +23,11 @@ postRouter.put('/:id',
   postFieldsMiddleware,
   userVerificationMiddleware,
   postController.update);
+
+postRouter.delete('/:id',
+  tokenMiddleware,
+  postExistenceMiddleware,
+  userVerificationMiddleware,
+  postController.remove);
 
 module.exports = postRouter;
