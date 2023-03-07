@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { BlogPost, PostCategory, User, Category } = require('../models');
 
 const create = async (post) => {
@@ -30,6 +31,23 @@ const edit = async ({ title, content, id }) => BlogPost
 
 const remove = async (id) => BlogPost.destroy({ where: { id } });
 
+// https://stackoverflow.com/questions/53971268/node-sequelize-find-where-like-wildcard
+const search = async (q) => BlogPost.findAll({
+  where: {
+    [Op.or]:
+      [{ title: { [Op.like]: q } }, { content: { [Op.like]: q } }],
+    },
+  include: [{
+      model: User,
+      as: 'user',
+      attributes: { exclude: 'password' },
+    }, {
+      model: Category,
+      as: 'categories',
+      through: { attributes: [] },
+    }],
+});
+
 module.exports = {
   create,
   findPost,
@@ -37,4 +55,5 @@ module.exports = {
   findById,
   edit,
   remove,
+  search,
 };

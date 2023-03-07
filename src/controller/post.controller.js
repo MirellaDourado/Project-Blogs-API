@@ -59,10 +59,22 @@ const remove = async (req, res) => {
   }
 };
 
+const search = async (req, res) => {
+  try {
+    const { q = '' } = req.query;
+    console.log(q);
+    const post = await postService.search(`%${q}%`);
+    return res.status(200).json(post);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   create,
   getAll,
   getById,
   update,
   remove,
+  search,
 };

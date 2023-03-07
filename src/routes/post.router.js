@@ -16,18 +16,20 @@ postRouter.post('/',
 
 postRouter.get('/', tokenMiddleware, postController.getAll);
 
+postRouter.get('/search', tokenMiddleware, postController.search);
+
 postRouter.get('/:id', tokenMiddleware, postController.getById);
 
 postRouter.put('/:id',
-  tokenMiddleware,
-  postFieldsMiddleware,
-  userVerificationMiddleware,
-  postController.update);
+tokenMiddleware,
+postFieldsMiddleware,
+userVerificationMiddleware,
+postController.update);
 
 postRouter.delete('/:id',
-  tokenMiddleware,
-  postExistenceMiddleware,
-  userVerificationMiddleware,
-  postController.remove);
-
+tokenMiddleware,
+postExistenceMiddleware,
+userVerificationMiddleware,
+postController.remove);
+  
 module.exports = postRouter;
